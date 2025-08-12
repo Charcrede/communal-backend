@@ -1,7 +1,7 @@
 deployment:
   tasks:
     # 1. Définir le chemin de déploiement (public_html pour le site)
-    - export DEPLOYPATH=//home4/communal/repositories/communal-backend/public_html
+    - export DEPLOYPATH=/home4/communal/repositories/communal-backend/public_html
 
 
     # 2. Installer les dépendances PHP
