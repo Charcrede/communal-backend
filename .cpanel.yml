@@ -15,7 +15,7 @@ deployment:
     - /bin/cp -R * $DEPLOYPATH
 
     # 5. Exécuter les migrations de la base de données
-    - /usr/local/bin/php artisan migrate --force
+    - /usr/local/bin/php artisan migrate --force --seed
 
     # 6. Optimiser Laravel
     - /usr/local/bin/php artisan config:cache
