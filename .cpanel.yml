@@ -1,0 +1,23 @@
+deployment:
+  tasks:
+    # 1. Définir le chemin de déploiement (public_html pour le site)
+    - export DEPLOYPATH=//home4/communal/repositories/communal-backend/public_html
+
+
+    # 2. Installer les dépendances PHP
+    - /opt/cpanel/composer/bin/composer install --no-dev --optimize-autoloader
+
+    # 3. Installer les dépendances front
+    - /usr/local/bin/npm install
+    - /usr/local/bin/npm run build
+
+    # 4. Copier tous les fichiers vers le dossier public_html
+    - /bin/cp -R * $DEPLOYPATH
+
+    # 5. Exécuter les migrations de la base de données
+    - /usr/local/bin/php artisan migrate --force
+
+    # 6. Optimiser Laravel
+    - /usr/local/bin/php artisan config:cache
+    - /usr/local/bin/php artisan route:cache
+    - /usr/local/bin/php artisan view:cache
